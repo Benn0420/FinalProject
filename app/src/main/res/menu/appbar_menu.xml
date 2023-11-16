@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/appbar_item_home"
+        android:icon="@drawable/ic_custom_home"
+        android:title="Home"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/appbar_item_save"
+        android:icon="@drawable/ic_custom_save"
+        android:title="Save"
+        android:orderInCategory="101"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/appbar_item_info"
+        android:icon="@drawable/ic_custom_info"
+        android:title="Info"
+        android:orderInCategory="102"
+        app:showAsAction="ifRoom" />
+
+</menu>

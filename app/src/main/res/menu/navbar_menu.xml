@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navbar_item_home"
+        android:icon="@drawable/ic_custom_home"
+        android:title="Homepage"
+        android:orderInCategory="99"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/navbar_item_today"
+        android:icon="@drawable/ic_custom_today"
+        android:title="Today's Space Image"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/navbar_item_choice"
+        android:icon="@drawable/ic_custom_choice"
+        android:title="Pick a Day"
+        android:orderInCategory="101"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/navbar_item_folder"
+        android:icon="@drawable/ic_custom_folder"
+        android:title="Collections"
+        android:orderInCategory="102"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/navbar_item_iss"
+        android:icon="@drawable/ic_custom_iss"
+        android:title="Track the I.S.S."
+        android:orderInCategory="103"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/navbar_item_info"
+        android:icon="@drawable/ic_custom_info"
+        android:title="Information about App"
+        android:orderInCategory="104"
+        app:showAsAction="ifRoom" />
+
+</menu>

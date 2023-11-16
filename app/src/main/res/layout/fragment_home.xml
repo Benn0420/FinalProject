@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_custom_rocket"
+    tools:context=".HomeFragment">
+
+    <TextView
+        android:id="@+id/nasaText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp"
+        android:text="NASA"
+        android:fontFamily="@font/orbitronio"
+        android:textColor="#FFFFFF"
+        android:background="#33FFFFFF"
+        android:textSize="75dp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/iotdText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/nasaText"
+        app:layout_constraintTop_toBottomOf="@id/nasaText"
+        app:layout_constraintEnd_toEndOf="@id/nasaText"
+        android:layout_marginTop="10dp"
+        android:text="Image of the Day"
+        android:fontFamily="@font/orbitronio"
+        android:textColor="#FFFFFF"
+        android:background="#33FFFFFF"
+        android:textSize="30dp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/today_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/nasaText"
+        app:layout_constraintTop_toBottomOf="@id/iotdText"
+        app:layout_constraintEnd_toEndOf="@id/nasaText"
+        android:layout_marginTop="120dp"
+        android:text="Todays Image of Space"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:backgroundTint="#FFFFFF"/>
+    <Button
+        android:id="@+id/pickaday_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/nasaText"
+        app:layout_constraintTop_toBottomOf="@id/today_button"
+        app:layout_constraintEnd_toEndOf="@id/nasaText"
+        android:layout_marginTop="10dp"
+        android:text="Pick a Date"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:backgroundTint="#FFFFFF"/>
+    <Button
+        android:id="@+id/collections_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/nasaText"
+        app:layout_constraintTop_toBottomOf="@id/pickaday_button"
+        app:layout_constraintEnd_toEndOf="@id/nasaText"
+        android:layout_marginTop="10dp"
+        android:text="Saved Photos"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:backgroundTint="#FFFFFF"/>
+    <Button
+        android:id="@+id/trackiss_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/nasaText"
+        app:layout_constraintTop_toBottomOf="@id/collections_button"
+        app:layout_constraintEnd_toEndOf="@id/nasaText"
+        android:layout_marginTop="10dp"
+        android:text="Track the I.S.S."
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:backgroundTint="#FFFFFF"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
