@@ -8,7 +8,9 @@ import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,26 +25,35 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    /*
+    This is the main activity for the fragment. Setting the toolbar,
+    navigation drawer and content container to load varying fragments.
+    This activity handles all menu item clicks, allowing users to swap
+    fragments and discover the app.
+     */
+
     ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Binding layout inflater to inflate the layout
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBar.myToolbar);
-
+        // Setting drawer toggle function
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, binding.myDrawer, binding.appBar.myToolbar,
                 R.string.open, R.string.close);
 
         binding.myDrawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        // Setting content container to the Home Fragment on loading
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.containers, new HomeFragment());
         transaction.commit();
 
+        // Handling specific toolbar clicks
         binding.appBar.myToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -61,10 +72,11 @@ public class MainActivity extends AppCompatActivity {
                         saveImage();
                         //Toast.makeText(MainActivity.this, "Image saved", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.this, "No image to save", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, getString(R.string.MAimage), Toast.LENGTH_SHORT).show();
                     }
                 } else if (id == R.id.appbar_item_info) {
-                    finishAffinity();
+                    // Show info dialog based on the current fragment
+                    showInfoDialog();
                 }
 
                 return true;
@@ -91,12 +103,25 @@ public class MainActivity extends AppCompatActivity {
                     showDatePicker();
                 } else if (id == R.id.navbar_item_folder) {
                     transaction.replace(R.id.containers, new CollectionsFragment());
-                    transaction.addToBackStack("Collection");
+                    transaction.addToBackStack("CollectionsList");
                     transaction.commit();
                 } else if (id == R.id.navbar_item_iss) {
                     transaction.replace(R.id.containers, new IssFragment());
                     transaction.addToBackStack("ISStracking");
                     transaction.commit();
+                } else if (id == R.id.navbar_item_info) {
+                    // Create and show the AlertDialog
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setMessage(getString(R.string.InfoAboutApp))
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // User clicked OK
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
 
                 binding.myDrawer.closeDrawer(GravityCompat.START);
@@ -104,6 +129,36 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private void showInfoDialog() {
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.containers);
+        String dialogMessage = "";
+
+        if (currentFragment instanceof HomeFragment) {
+            dialogMessage = getString(R.string.HomeInfo);
+        } else if (currentFragment instanceof ImageViewFragment) {
+            dialogMessage = getString(R.string.ImageInfo);
+        } else if (currentFragment instanceof CollectionsFragment) {
+            dialogMessage = getString(R.string.CollectionsInfo);
+        } else if (currentFragment instanceof IssFragment) {
+            dialogMessage = getString(R.string.TrackingIssInfo);
+        } else {
+            dialogMessage = getString(R.string.InfoAboutApp);
+        }
+
+        // Create and show the AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage(dialogMessage)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         // Handle the date selection
                         String selectedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month + 1, dayOfMonth);
-                        Toast.makeText(MainActivity.this, "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, getString(R.string.MAselected) + selectedDate, Toast.LENGTH_SHORT).show();
 
                         // Pass the selected date to the next fragment
                         Bundle bundle = new Bundle();

@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Designing menu for the Toolbar -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <!-- homepage navigation -->
     <item
         android:id="@+id/appbar_item_home"
         android:icon="@drawable/ic_custom_home"
-        android:title="Home"
+        android:title="@string/AMhome"
         android:orderInCategory="100"
         app:showAsAction="ifRoom" />
-
+    <!-- save image option -->
     <item
         android:id="@+id/appbar_item_save"
         android:icon="@drawable/ic_custom_save"
-        android:title="Save"
+        android:title="@string/AMsave"
         android:orderInCategory="101"
         app:showAsAction="ifRoom" />
-
+    <!-- fragment info dialog navigation -->
     <item
         android:id="@+id/appbar_item_info"
         android:icon="@drawable/ic_custom_info"
-        android:title="Info"
+        android:title="@string/AMinfo"
         android:orderInCategory="102"
         app:showAsAction="ifRoom" />
 

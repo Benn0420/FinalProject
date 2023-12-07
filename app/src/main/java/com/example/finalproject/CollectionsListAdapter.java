@@ -14,6 +14,10 @@ import java.util.ArrayList;
 
 public class CollectionsListAdapter extends ArrayAdapter<String> {
 
+    /*
+    This java class is used to adapt the collections list with the list item layout.
+     */
+
     public CollectionsListAdapter (Context context, ArrayList<String> titles) {
         super(context, 0, titles);
     }
@@ -25,8 +29,9 @@ public class CollectionsListAdapter extends ArrayAdapter<String> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_layout, parent, false);
         }
 
+        // Retrieving the titles list position
         String title = getItem(position);
-
+        // converting the title and setting it to the text views text
         TextView titleTextView = convertView.findViewById(R.id.itemTitleTextView);
         titleTextView.setText(title);
 

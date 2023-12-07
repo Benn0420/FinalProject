@@ -18,6 +18,12 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
+    /*
+    This fragment is the home fragment. The first fragment displayed upon
+    loading. The fragment presents four buttons leading to different fragments
+    within the app.
+     */
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -44,7 +50,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Handle click for "Today's Image of Space" button
-                Toast.makeText(getActivity(), "Today's Image Button Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.HFtodayT), Toast.LENGTH_SHORT).show();
                 // logic for this button click
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.replace(R.id.containers, new ImageViewFragment(), "ImageView");
@@ -69,7 +75,7 @@ public class HomeFragment extends Fragment {
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                                 // Handle the date selection
                                 String selectedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month + 1, dayOfMonth);
-                                Toast.makeText(getActivity(), "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), getString(R.string.HFpickT) + selectedDate, Toast.LENGTH_SHORT).show();
 
                                 // Pass the selected date to the next fragment
                                 Bundle bundle = new Bundle();
@@ -100,7 +106,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Handle click for "Saved Photos" button
-                Toast.makeText(getActivity(), "Saved Photos Button Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.HFsavedT), Toast.LENGTH_SHORT).show();
                 // logic for this button click
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.replace(R.id.containers, new CollectionsFragment(), "CollectionsList");
@@ -113,8 +119,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Handle click for "Track the I.S.S." button
-                Toast.makeText(getActivity(), "Track the I.S.S. Button Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.HFissT), Toast.LENGTH_SHORT).show();
                 // logic for this button click
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.containers, new IssFragment(), "IssTracking");
+                transaction.addToBackStack("IssTracking");
+                transaction.commit();
             }
         });
 

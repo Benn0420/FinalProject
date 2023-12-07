@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Designing menu for the Navigation Drawer -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <!-- homepage navigation -->
     <item
         android:id="@+id/navbar_item_home"
         android:icon="@drawable/ic_custom_home"
-        android:title="Homepage"
+        android:title="@string/NMhome"
         android:orderInCategory="99"
         app:showAsAction="ifRoom" />
-
+    <!-- todays photo navigation -->
     <item
         android:id="@+id/navbar_item_today"
         android:icon="@drawable/ic_custom_today"
-        android:title="Today's Space Image"
+        android:title="@string/NMtoday"
         android:orderInCategory="100"
         app:showAsAction="ifRoom" />
-
+    <!-- date pick navigation -->
     <item
         android:id="@+id/navbar_item_choice"
         android:icon="@drawable/ic_custom_choice"
-        android:title="Pick a Day"
+        android:title="@string/NMpick"
         android:orderInCategory="101"
         app:showAsAction="ifRoom" />
-
+    <!-- photo collection navigation -->
     <item
         android:id="@+id/navbar_item_folder"
         android:icon="@drawable/ic_custom_folder"
-        android:title="Collections"
+        android:title="@string/NMcollection"
         android:orderInCategory="102"
         app:showAsAction="ifRoom" />
-
+    <!-- iss tracking navigation -->
     <item
         android:id="@+id/navbar_item_iss"
         android:icon="@drawable/ic_custom_iss"
-        android:title="Track the I.S.S."
+        android:title="@string/NMiss"
         android:orderInCategory="103"
         app:showAsAction="ifRoom" />
-
+    <!-- app info dialog navigation -->
     <item
         android:id="@+id/navbar_item_info"
         android:icon="@drawable/ic_custom_info"
-        android:title="Information about App"
+        android:title="@string/NMinfo"
         android:orderInCategory="104"
         app:showAsAction="ifRoom" />
 

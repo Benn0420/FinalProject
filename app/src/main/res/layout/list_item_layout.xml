@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Linearlayout to hold text views for list -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
+    <!-- Textview to showcase item in list -->
     <TextView
         android:id="@+id/itemTitleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:padding="8dp"/>
+        android:textStyle="bold"/>
 </LinearLayout>

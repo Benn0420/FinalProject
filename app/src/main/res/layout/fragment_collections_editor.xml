@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dialog fragment to edit entry of users saved photo -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CollectionsEditorFragment"
+    android:background="@drawable/ic_custom_space"
+    android:tag="CollectionsEditorFragment">
+    <!-- image view to hold edits photo -->
+    <ImageView
+        android:id="@+id/imageEdit"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- text view to hold edits title -->
+    <TextView
+        android:id="@+id/passedImageTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="10dp"
+        android:text=""
+        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageEdit"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- editable text to enter title edit entry -->
+    <EditText
+        android:id="@+id/editTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="10dp"
+        android:hint=""
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:backgroundTint="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageEdit"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- text view to hold edits image date -->
+    <TextView
+        android:id="@+id/passedImageDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:text=""
+        android:textSize="15sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTitle"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- text view to hold edits image description -->
+    <TextView
+        android:id="@+id/passedImageDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:text=""
+        android:textSize="15sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passedImageDate"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- confirm button for edit entries -->
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:layout_marginTop="20dp"
+        android:text="@string/CFEconfirm"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:backgroundTint="#0000FF"
+        android:layout_gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passedImageDescription"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- rename button for edit dialog fragment -->
+    <Button
+        android:id="@+id/renameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/CFErename"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/removeButton"
+        app:layout_constraintTop_toBottomOf="@id/passedImageDescription"/>
+    <!-- remove button for edit dialog fragment -->
+    <Button
+        android:id="@+id/removeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:text="@string/CFEremove"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:backgroundTint="#FF0000"
+        app:layout_constraintStart_toEndOf="@id/renameButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passedImageDescription"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

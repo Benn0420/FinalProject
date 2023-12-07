@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -34,11 +36,18 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class ImageViewFragment extends Fragment {
 
+    /*
+    This fragment is used for displaying the NASA image, title and
+    description for the retrieved image. Whether is be today's photo
+    or a custom date.
+     */
+
     private ImageView imageView;
     private TextView iotdDateTextView;
     private TextView iotdTitleTextView;
     private TextView iotdDescriptionTextView;
     private ImageInfo imageInfo;
+    private View view;
 
     public ImageViewFragment() {
         // Required empty public constructor
@@ -52,7 +61,7 @@ public class ImageViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_image_view, container, false);
+        view = inflater.inflate(R.layout.fragment_image_view, container, false);
 
         imageView = view.findViewById(R.id.iotdPhoto);
         iotdDateTextView = view.findViewById(R.id.iotdDate);
@@ -128,8 +137,23 @@ public class ImageViewFragment extends Fragment {
 
         // Retrieve data for verification
         String retrievedFile = preferences.getString(filename + "_title", "NONEXISTENT");
-        // Toast for save verification
-        Toast.makeText(getActivity(), "File has been created: " + retrievedFile, Toast.LENGTH_SHORT).show();
+        // Snackbar for save verification
+        Snackbar snackbar = Snackbar.make(view, getString(R.string.IVFfile) + retrievedFile, Snackbar.LENGTH_LONG);
+        snackbar.setAction(getString(R.string.IVFundo), new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Logic to undo the creation of the file
+                editor.remove(filename);
+                editor.remove(filename + "_title");
+                editor.remove(filename + "_description");
+                editor.remove(filename + "_date");
+                editor.apply();
+
+                // Notify the user that the undo operation is successful
+                Toast.makeText(getActivity(), getString(R.string.IVFundoS), Toast.LENGTH_SHORT).show();
+            }
+        });
+        snackbar.show();
     }
 
     private class FetchAndDisplayTodaysImage extends AsyncTask<Void, Void, ImageInfo> {
@@ -168,25 +192,25 @@ public class ImageViewFragment extends Fragment {
                     }
                     reader.close();
 
-                    // Parse JSON
+                    // Parsing JSON
                     JSONObject jsonObject = new JSONObject(response.toString());
                     String imageUrl = jsonObject.getString("url");
                     String imageDate = jsonObject.getString("date");
-                    // Replace dashes with spaces in the date
+                    // Replacing dashes with spaces in the date
                     imageDate = imageDate.replace("-", " ");
                     String imageTitle = jsonObject.getString("title");
                     String imageDescription = jsonObject.getString("explanation");
 
-                    // Download image
+                    // Downloading image
                     URL imageUrlObj = new URL(imageUrl);
                     HttpsURLConnection imageConnection = (HttpsURLConnection) imageUrlObj.openConnection();
                     imageConnection.connect();
                     InputStream imageInputStream = imageConnection.getInputStream();
 
-                    // Create an ImageInfo object
+                    // Creating an ImageInfo object
                     ImageInfo imageInfo = new ImageInfo();
                     imageInfo.bitmap = BitmapFactory.decodeStream(imageInputStream);
-                    imageInfo.imageDate = "Image of " + imageDate;
+                    imageInfo.imageDate = getString(R.string.IVFimage) + " " + imageDate;
                     imageInfo.imageTitle = imageTitle;
                     imageInfo.imageDescription = imageDescription;
 

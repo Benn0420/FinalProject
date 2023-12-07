@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!-- Using a LinearLayout to hold the AppBarLayout -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!-- Using a AppBarLayout to hold the Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <!-- Toolbar widget for displaying the app's toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
+            android:background="#DC1111"
             android:theme="?attr/actionBarTheme"
-            app:menu="@menu/appbar_menu"
-            android:background="#DC1111"/>
+            app:menu="@menu/appbar_menu"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- Including Content Layout for Fragment display -->
     <include layout="@layout/content_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
